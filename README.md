@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/lucasdlg5/movie-dojo.svg?branch=master)](https://travis-ci.com/lucasdlg5/movie-dojo)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
