@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../App.css';
+import Header from '../components/Header.js';
  
 class App extends Component {
  
@@ -7,9 +8,10 @@ class App extends Component {
  
     return (
       <div className="App">
-        <div className="App-header">
+      <Header text="Movie Dojo do Lusca!"/>
+        {/* <div className="App-header">
           <h2>Welcome to React</h2>
-        </div>
+        </div> */}
         <p className="App-intro">
           Welcome to the 'Movie Mojo' React app!
         </p>
