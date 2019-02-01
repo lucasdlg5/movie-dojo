@@ -4,7 +4,7 @@ import Header from './Header';
 import Movie from './Movie';
 import {initialMovies} from'../movies';
 import {additionalMovies} from '../movies';
- 
+import AddMovie from './AddMovie';
 
 class App extends Component {
 
@@ -19,6 +19,9 @@ class App extends Component {
         }
         </div>
         <div className="add-movies"><button onClick={this.loadAdditionalMovies}>Load more...</button></div>
+
+        <AddMovie addMovie={this.addMovieToGallery}/>
+
       </div>
     );
   }
@@ -28,6 +31,7 @@ class App extends Component {
    
     //Necessário fazer um BINDING da função quando executada para qual a classe que esta sendo executado.
     this.loadAdditionalMovies = this.loadAdditionalMovies.bind(this);
+    this.addMovieToGallery = this.addMovieToGallery.bind( this );
     this.state = {
       movies: initialMovies
     };
@@ -39,6 +43,17 @@ class App extends Component {
    
     this.setState({ movies: newMovies });
   }
+
+  addMovieToGallery( movie ) {
+    var ts = Date.now();
+    var newMovie = {};
+    newMovie[ 'movie' + ts ] = movie;
+    var currentMovies = { ...this.state.movies };
+    var newMovies = Object.assign( currentMovies, newMovie );
+    this.setState({ movies: newMovies });
+  }
+
+
 
 }
  
