@@ -5,7 +5,9 @@ import Movie from './Movie';
 import {initialMovies} from'../movies';
 import {additionalMovies} from '../movies';
  
+
 class App extends Component {
+
   render() {
     return (
       <div className="App">
@@ -15,11 +17,8 @@ class App extends Component {
         {
           Object.keys(this.state.movies).map(key => <Movie key={key} meta={this.state.movies[key]}/>)
         }
-          {/* <Movie title="50 First Dates" year="2004" description="Henry Roth is a man afraid of commitment up until he meets the beautiful Lucy. They hit it off and Henry think he's finally found the girl of his dreams." poster="./posters/50-first-dates.png" />
-          <Movie title="Ferris Bueller's Day Off" year="1986" description="A high school wise guy is determined to have a day off from school, despite what the principal thinks of that." poster="./posters/ferris.png" />
-          <Movie title="Matilda" year="1996" description="Story of a wonderful little girl, who happens to be a genius, and her wonderful teacher vs. the worst parents ever and the worst school principal imaginable." poster="./posters/matilda.jpg" />
-          <Movie title="Dirty Dancing" year="1987" description="Spending the summer at a Catskills resort with her family, Frances 'Baby' Houseman falls in love with the camp's dance instructor, Johnny Castle." poster="./posters/dirty-dancing.png" /> */}
         </div>
+        <div className="add-movies"><button onClick={this.loadAdditionalMovies}>Load more...</button></div>
       </div>
     );
   }
@@ -27,9 +26,18 @@ class App extends Component {
   constructor() {
     super();
    
+    //Necessário fazer um BINDING da função quando executada para qual a classe que esta sendo executado.
+    this.loadAdditionalMovies = this.loadAdditionalMovies.bind(this);
     this.state = {
       movies: initialMovies
     };
+  }
+
+  loadAdditionalMovies() {
+    var currentMovies = { ...this.state.movies };
+    var newMovies = Object.assign( currentMovies, additionalMovies );
+   
+    this.setState({ movies: newMovies });
   }
 
 }
